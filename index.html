@@ -91,11 +91,11 @@
                 const iphoneSinglePrice = 1219;
                 document.getElementById("iphoneSinglePrice").innerText = valueTotal * iphoneSinglePrice;
 
-                const totalIphone = valueTotal * iphoneSinglePrice;
-                document.getElementById("subTotalProductPrice").innerText = totalIphone;
+                //  const totalIphone = valueTotal * iphoneSinglePrice;
+                //  document.getElementById("subTotalProductPrice").innerText = totalIphone;
 
-                //  const allProductTotal = totalIphone + caseTotal;
-                //  document.getElementById("subTotalProductPrice").innerText = allProductTotal;
+                //  const subtotalPrice = totalIphone;
+                //  document.getElementById("subTotalProductPrice").innerText = subtotalPrice + caseValueTotal * caseIphoneSinglePrice;
             })
             /* Plus(+) Button End */
 
@@ -128,11 +128,11 @@
                 const caseIphoneSinglePrice = 59;
                 document.getElementById("caseIphoneSinglePrice").innerText = caseValueTotal * caseIphoneSinglePrice;
 
-                const caseTotal = caseValueTotal * caseIphoneSinglePrice;
-                document.getElementById("subTotalProductPrice").innerText = caseTotal;
+                //  const caseTotal = caseValueTotal * caseIphoneSinglePrice;
+                //  document.getElementById("subTotalProductPrice").innerText = caseValueTotal * caseIphoneSinglePrice;
 
-                //  const allProductTotal = totalIphone + caseTotal;
-                //  document.getElementById("subTotalProductPrice").innerText = allProductTotal;
+                //  const allProductTotalCase = caseTotal + totalIphone;
+                //  document.getElementById("subTotalProductPrice").innerText = allProductTotalCase;
             })
             /* Case Plus(+) Button End */
 
@@ -157,27 +157,12 @@
 
 
         /* Subtotal and Total Start */
-        const allProductTotal = totalIphone + caseTotal;
-        document.getElementById("subTotalProductPrice").innerText = allProductTotal;
-
-        //   const subTotalPrice = totalIphone + caseTotal;\
-        //   document.getElementById("subTotalProductPrice").innerText = subTotalPrice;
+        //   subtotal = 0;
+        //   for (var i = 0; i < subtotal; i++) {
+        //       const sum = (valueTotal * iphoneSinglePrice) + (caseValueTotal * caseIphoneSinglePrice);
+        //       console.log(sum);
+        //   }
         /* Subtotal and Total End */
-
-
-
-
-
-
-        //   External 
-        /* function totalPrice (id, price) {
-            const minusNumber = parseInt(id.value);
-            const afterMinus = minusNumber - 1;
-            document.getElementById(id).value = afterMinus;
-
-            const price = 1219;
-            document.getElementById(price).innerText = afterMinus * price;
-        } */
     </script>
 </body>
 
