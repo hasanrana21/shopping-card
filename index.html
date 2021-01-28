@@ -65,8 +65,8 @@
 
                             <div class="col-md-4 status">
                                 <h5> $<span id="subTotalProductPrice">1,278</span> </h5>
-                                <h5>$0</h5>
-                                <h5>$<span id="totalProductPrice">1,278</span></h5>
+                                <h5>$<span id="taxAmount">0</span></h5>
+                                <h5>$<span id="grandAmount">1,278</span></h5>
                             </div>
                         </div>
                     </div>
@@ -81,88 +81,122 @@
 
 
     <script>
-        /* Plus(+) Button Start */
+        /* Plus(+), Minus(-) Button Start */
         const plus = document.getElementById("plusButton");
         plus.addEventListener("click", function() {
-                const valueButtonNumber = parseInt(valueButton.value);
-                const valueTotal = valueButtonNumber + 1;
-                document.getElementById("valueButton").value = valueTotal;
+            handlePhonePriceChange(true);
+            calculateTotal();
+        })
 
-                const iphoneSinglePrice = 1219;
-                document.getElementById("iphoneSinglePrice").innerText = valueTotal * iphoneSinglePrice;
-
-                //  const totalIphone = valueTotal * iphoneSinglePrice;
-                //  document.getElementById("subTotalProductPrice").innerText = totalIphone;
-
-                //  const subtotalPrice = totalIphone;
-                //  document.getElementById("subTotalProductPrice").innerText = subtotalPrice + caseValueTotal * caseIphoneSinglePrice;
-            })
-            /* Plus(+) Button End */
-
-        /* Minus(-) Button Start */
         const minus = document.getElementById("minusButton");
         minus.addEventListener("click", function() {
-            const minusNumber = parseInt(valueButton.value);
-            const afterMinus = minusNumber - 1;
-            document.getElementById("valueButton").value = afterMinus;
-
-            const iphoneSinglePrice = 1219;
-            document.getElementById("iphoneSinglePrice").innerText = afterMinus * iphoneSinglePrice;
-
-            const totaIphoneMinus = afterMinus * iphoneSinglePrice;
-            document.getElementById("subTotalProductPrice").innerText = totaIphoneMinus;
-
+            handlePhonePriceChange(false);
+            calculateTotal();
         })
 
-        /* Minus(-) Button End */
+        function handlePhonePriceChange(isPlus) {
+            const valueButtonNumber = parseInt(valueButton.value);
+            let valueTotal = valueButtonNumber;
+            if (isPlus == true) {
+                valueTotal = valueButtonNumber + 1;
+            } else if (isPlus == false && valueTotal > 0) {
+                valueTotal = valueButtonNumber - 1;
+            }
+            document.getElementById("valueButton").value = valueTotal;
+            const iphoneSinglePrice = 1219;
+            document.getElementById("iphoneSinglePrice").innerText = valueTotal * iphoneSinglePrice;
+        }
+        /* Plus(+), Minus(-) Button End */
 
+        // /* Plus(+) Button Start */
+        // const plus = document.getElementById("plusButton");
+        // plus.addEventListener("click", function() {
+        //         const valueButtonNumber = parseInt(valueButton.value);
+        //         const valueTotal = valueButtonNumber + 1;
+        //         document.getElementById("valueButton").value = valueTotal;
+        //         const iphoneSinglePrice = 1219;
+        //         document.getElementById("iphoneSinglePrice").innerText = valueTotal * iphoneSinglePrice;
+        //     })
+        //     /* Plus(+) Button End */
 
+        // /* Minus(-) Button Start */
+        // const minus = document.getElementById("minusButton");
+        // minus.addEventListener("click", function() {
+        //         const valueButtonNumber = parseInt(valueButton.value);
+        //         const valueTotal = valueButtonNumber - 1;
+        //         document.getElementById("valueButton").value = valueTotal;
+        //         const iphoneSinglePrice = 1219;
+        //         document.getElementById("iphoneSinglePrice").innerText = valueTotal * iphoneSinglePrice;
+        //     })
+        //     /* Minus(-) Button End */
 
-        /* Case Plus(+) Button Start */
+        /* Case Plus(+), Minus(-) Button Start */
         const casePlus = document.getElementById("casePlusButton");
         casePlus.addEventListener("click", function() {
-                const caseValueButtonNumber = parseInt(caseValueButton.value);
-                const caseValueTotal = caseValueButtonNumber + 1;
-                document.getElementById("caseValueButton").value = caseValueTotal;
-
-                const caseIphoneSinglePrice = 59;
-                document.getElementById("caseIphoneSinglePrice").innerText = caseValueTotal * caseIphoneSinglePrice;
-
-                //  const caseTotal = caseValueTotal * caseIphoneSinglePrice;
-                //  document.getElementById("subTotalProductPrice").innerText = caseValueTotal * caseIphoneSinglePrice;
-
-                //  const allProductTotalCase = caseTotal + totalIphone;
-                //  document.getElementById("subTotalProductPrice").innerText = allProductTotalCase;
-            })
-            /* Case Plus(+) Button End */
-
-        /* Case Minus(-) Button Start */
-        const caseMinus = document.getElementById("caseMinusButton");
-        caseMinus.addEventListener("click", function() {
-            const caseMinusNumber = parseInt(caseValueButton.value);
-            const caseAfterMinus = caseMinusNumber - 1;
-            document.getElementById("caseValueButton").value = caseAfterMinus;
-
-            const caseIphoneSinglePrice = 59;
-            document.getElementById("caseIphoneSinglePrice").innerText = caseAfterMinus * caseIphoneSinglePrice;
-
-            const caseTotalMinus = caseAfterMinus * caseIphoneSinglePrice;
-            document.getElementById("subTotalProductPrice").innerText = caseTotalMinus;
-
+            handleCasePriceChange(true);
+            calculateTotal();
         })
 
-        /* Case Minus(-) Button End */
+        const caseMinus = document.getElementById("caseMinusButton");
+        caseMinus.addEventListener("click", function() {
+            handleCasePriceChange(false);
+            calculateTotal();
+        })
 
+        function handleCasePriceChange(isCasePlus) {
+            const caseValueButtonNumber = parseInt(caseValueButton.value);
+            let caseValueTotal = caseValueButtonNumber;
+            if (isCasePlus == true) {
+                caseValueTotal = caseValueButtonNumber + 1;
+            } else if (isCasePlus == false && caseValueTotal > 0) {
+                caseValueTotal = caseValueButtonNumber - 1;
+            }
+            document.getElementById("caseValueButton").value = caseValueTotal;
+            const caseIphoneSinglePrice = 59;
+            document.getElementById("caseIphoneSinglePrice").innerText = caseValueTotal * caseIphoneSinglePrice;
+        }
+        /* Case Plus(+), Minus(-) Button End */
 
+        // /* Case Plus(+) Button Start */
+        // const casePlus = document.getElementById("casePlusButton");
+        // casePlus.addEventListener("click", function() {
+        //         const caseValueButtonNumber = parseInt(caseValueButton.value);
+        //         const caseValueTotal = caseValueButtonNumber + 1;
+        //         document.getElementById("caseValueButton").value = caseValueTotal;
 
+        //         const caseIphoneSinglePrice = 59;
+        //         document.getElementById("caseIphoneSinglePrice").innerText = caseValueTotal * caseIphoneSinglePrice;
+        //     })
+        //     /* Case Plus(+) Button End */
 
-        /* Subtotal and Total Start */
-        //   subtotal = 0;
-        //   for (var i = 0; i < subtotal; i++) {
-        //       const sum = (valueTotal * iphoneSinglePrice) + (caseValueTotal * caseIphoneSinglePrice);
-        //       console.log(sum);
-        //   }
-        /* Subtotal and Total End */
+        // /* Case Minus(-) Button Start */
+        // const caseMinus = document.getElementById("caseMinusButton");
+        // caseMinus.addEventListener("click", function() {
+        //         const caseValueButtonNumber = parseInt(caseValueButton.value);
+        //         const caseValueTotal = caseValueButtonNumber - 1;
+        //         document.getElementById("caseValueButton").value = caseValueTotal;
+
+        //         const caseIphoneSinglePrice = 59;
+        //         document.getElementById("caseIphoneSinglePrice").innerText = caseValueTotal * caseIphoneSinglePrice;
+        //     })
+        //     /* Case Minus(-) Button End */
+
+        function calculateTotal() {
+            const totalPhonePrice = document.getElementById("valueButton");
+            const phoneTotal = parseInt(totalPhonePrice.value);
+
+            const totalCasePrice = document.getElementById("caseValueButton");
+            const caseTotal = parseInt(totalCasePrice.value);
+
+            const totalPrice = (phoneTotal * 1219) + (caseTotal * 59);
+            document.getElementById("subTotalProductPrice").innerText = totalPrice;
+
+            const tax = Math.round(totalPrice / 15);
+            document.getElementById("taxAmount").innerText = tax;
+
+            const grandTotal = totalPrice + tax;
+            document.getElementById("grandAmount").innerText = grandTotal;
+        }
     </script>
 </body>
 
